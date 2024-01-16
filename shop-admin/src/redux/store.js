@@ -1,5 +1,5 @@
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
-import cartReducer from "./cartRedux";
+
 import userReducer from "./userRedux";
 import {
   persistStore,
@@ -19,9 +19,9 @@ const persistConfig = {
   storage,
 };
 
-const rootReducer = combineReducers({ user: userReducer, cart: cartReducer })
+const rootReducer = combineReducers({ user: userReducer })
 
-const persistedReducer = persistReducer(persistConfig, rootReducer);
+const persistedReducer = persistReducer(persistConfig,rootReducer);
 
 export const store = configureStore({
   reducer: persistedReducer,  // Fix the typo here
