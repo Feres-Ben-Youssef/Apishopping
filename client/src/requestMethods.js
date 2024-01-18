@@ -4,9 +4,13 @@ const BASE_URL = "http://localhost:5000/api";
 
 const getPersistedToken = () => {
   try {
-    const persistedRoot = JSON.parse(localStorage.getItem("persist:root"));
-    const currentUser = JSON.parse(persistedRoot.currentUser);
-    return currentUser.accessToken;
+    const persistedRoot = localStorage.getItem("persist:root");
+    console.log("persistedRoot:", persistedRoot);
+
+    const currentUser = persistedRoot ? JSON.parse(persistedRoot).currentUser : null;
+    console.log("currentUser:", currentUser);
+
+    return currentUser ? currentUser.accessToken : null;
   } catch (error) {
     console.error("Error retrieving access token from local storage:", error);
     return null;

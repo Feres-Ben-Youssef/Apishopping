@@ -11,7 +11,7 @@ export default function WidgetLg() {
     const getOrders = async () => {
       try {
         const res = await userRequest.get("orders");
-        console.log("Response:", res);
+        
         setOrders(res.data);
       } catch (error) {
         console.error("Error fetching orders:", error.response);

@@ -21,20 +21,20 @@ export default function Home() {
     const getStats = async () => {
       try {
         const res = await userRequest.get("/users/stats");
-        res.data.map(item => {
-          setUserStats(prev => [
-            ...prev,
-            { name: MONTHS[item._id - 1], "Active User": item.total },
-          ]);
-        });
+        const sortedStats = res.data
+          .sort((a, b) => b._id - a._id) // Sort by month in ascending order
+          .map(item => ({
+            name: MONTHS[item._id - 1],
+            "Active User": item.total,
+          }));
+  
+        setUserStats(sortedStats);
       } catch (error) {
         console.error("Error fetching user stats:", error);
       }
     };
     getStats();
   }, [MONTHS]);
-
-  console.log(userStats);
 
   return (
     <div className="home">

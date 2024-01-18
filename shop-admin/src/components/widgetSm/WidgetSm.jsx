@@ -10,7 +10,7 @@ export default function WidgetSm() {
     const getUsers = async () => {
       try {
         const res = await userRequest.get("users/?new=true");
-        console.log("Response:", res);
+        
         setUsers(res.data);
       } catch (error) {
         console.error("Error fetching users:", error.response);
@@ -31,7 +31,7 @@ export default function WidgetSm() {
           {users.map((user) => (
             <li className="widgetSmListItem" key={user._id}> 
               <img
-                src={user.img || "https://images.pexels.com/photos/3992656/pexels-photo-3992656.png?auto=compress&cs=tinysrgb&dpr=2&w=500"}
+                src={user.img || "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnUtoVwPq-UFO5b4Q1rNgXi3GHOwI_D3R8K63RzfxAnm3GgUCyHUfFxkRzzpsfOAoUtVs&usqp=CAU"}
                 alt=""
                 className="widgetSmImg"
               />
